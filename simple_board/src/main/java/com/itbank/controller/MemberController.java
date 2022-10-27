@@ -35,6 +35,8 @@ public class MemberController {
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
 		return "redirect:" + request.getHeader("referer");
+		// 로그아웃하면 무조건 대문페이지로 이동하는 대신, 원래 있던 페이지로 이동한다
+		// 단 로그인이 필요한 메뉴이면 인터셉터에 의해 로그인 페이지로 이동된다
 	}
 	
 	@GetMapping("/join")
@@ -46,7 +48,7 @@ public class MemberController {
 		return "redirect:/member/login";
 	}
 	
-	// AJAX로 ID중복체크
+	// AJAX로 ID중복 체크를 처리하는 함수
 	@GetMapping("/dupCheck/{userid}")
 	@ResponseBody
 	public boolean dupCheck(@PathVariable String userid) {

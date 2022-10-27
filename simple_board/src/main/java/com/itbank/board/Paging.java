@@ -4,7 +4,7 @@ package com.itbank.board;
 // OFFSET [X] ROWS               -- X개의 줄을 건너뛰고
 // FETCH NEXT [Y] ROWS ONLY;     -- 다음 Y줄을 불러온다
 
-public class Paging {
+public class Paging {	// 전체 레코드 수를 일정한 단위 크기로 나누어서 보여주기
 	private int page;				// 요청받은 페이지 (*)
 	private int boardCount;			// 출력할 전체 게시물 개수 (*)
 	private int perPage = 5;		// 화면당 출력할 게시물 개수
@@ -25,12 +25,12 @@ public class Paging {
 		end = begin + perSection - 1;
 		
 		pageCount = boardCount / perPage + (boardCount % perPage != 0 ? 1 : 0);
-		end = end > pageCount ? pageCount : end;
+		end = end > pageCount ? pageCount : end;		// 마지막 쪽번호는 전체 페이지수를 초과할 수 없다
 		
-		int section = (page - 1) / perSection;
-		int lastSection = (pageCount - 1) / perSection;
-		prev = begin > perSection;
-		next = section < lastSection;
+		int section = (page - 1) / perSection;			// 현재 섹션
+		int lastSection = (pageCount - 1) / perSection;	// 마지막 섹션
+		prev = begin > perSection;		// [이전] 버튼을 출력하는 조건 : 현재 시작 쪽번호가, 화면당 출력할 페이지의 개수보다 클 경우
+		next = section < lastSection;	// [다음] 버튼을 출력하는 조건 : 현재 섹션이, 마지막 섹션보다 작은 경우
 	}
 	
 	public int getPerSection() {

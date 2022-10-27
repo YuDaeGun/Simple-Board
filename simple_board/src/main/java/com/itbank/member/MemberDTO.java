@@ -2,10 +2,22 @@ package com.itbank.member;
 
 import java.sql.Date;
 
+//	idx			number 			default member4_seq.nextval primary key,
+//	userid		varchar2(100)	unique not null,
+//	userpw		varchar2(255)	not null,
+//	name		varchar2(100)	not null,
+//	email		varchar2(200)	not null,
+//	birth		date			not null,
+//	deleted		char(1)			default 'n' check(deleted in ('y', 'n'))
+
 public class MemberDTO {
 	private int idx;
-	private String userid, userpw, name, email, deleted;
+	private String userid;
+	private String userpw;
+	private String name;
+	private String email;
 	private Date birth;
+	private String deleted;
 	
 	public int getIdx() {
 		return idx;

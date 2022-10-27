@@ -40,4 +40,6 @@ public interface BoardDAO {
 //			+ "	where idx=#{idx}")
 //	int updateWithFile(BoardDTO dto);
 	
+	
+	
 }

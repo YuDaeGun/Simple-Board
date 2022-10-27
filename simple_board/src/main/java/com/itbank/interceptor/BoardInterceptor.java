@@ -30,7 +30,7 @@ public class BoardInterceptor extends HandlerInterceptorAdapter {
 		}
 		
 		// 로그인이 되어 있으나 작성자와 로그인 사용자가 일치하지 않으면 view로 이동
-		// 요청주소에서 수정 혹은 삭제를 원하는 게시글의 번호를 추출했다 ex) http://localhost:8080/day09/board/modify/1018 -> 1018
+		// 요청주소에서 수정 혹은 삭제를 원하는 게시글의 번호를 추출한다 ex) http://localhost:8080/day09/board/modify/1018 -> 1018
 		String idx = url.substring(url.lastIndexOf("/") + 1);
 		BoardDTO dto = boardDAO.selectOne(Integer.parseInt(idx));
 		

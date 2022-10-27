@@ -6,7 +6,7 @@
 <div>
 	<h2>
 		게시판
-		<select id="category">
+		<select id="category"><!-- form태그로 값을 제출할 용도가 아니므로, name이 필요없다 -->
 			<option ${empty param.category ? 'selected' : '' } value="">전체</option>
 			<option ${param.category == '공지' ? 'selected' : '' } value="공지">공지</option>
 			<option ${param.category == '게임' ? 'selected' : '' } value="게임">게임</option>
@@ -83,10 +83,11 @@
 </div>
 
 <script>
+	// 사용자 이름에서 우클릭하면 메뉴가 뜨는 코드
 	const userList = document.querySelectorAll('section > div:last-child > table > tbody > tr > td:nth-child(3)')
 	
 	const contextMenuHandler = function(event) {
-		event.preventDefault()
+		event.preventDefault()	// 기본작동을 막는다 (우클릭 기본 메뉴가 안뜬다)
 		const contextMenu = document.getElementById('contextMenu')
 		contextMenu.style.position = 'absolute'
 		contextMenu.style.top = event.clientY + 'px'
@@ -96,21 +97,25 @@
 	
 	userList.forEach(user => user.addEventListener('contextmenu', contextMenuHandler))
 	
+	// 다른 곳을 클릭하면 나타났던 메뉴가 닫히게 하자
 	document.querySelector('body').addEventListener('click', function() {
 		document.getElementById('contextMenu').style.display = 'none'
 	})
 </script>
 
 <script>
-	const categorySelect = document.getElementById('category')
+	// 카테고리를 선택하면 자동으로 요청하는 코드
+	const categorySelect = document.getElementById('category')	// 이벤트 소스
 	
-	const changeHandler = function(event) {
+	const changeHandler = function(event) {						// 이벤트 핸들러
 		const url = '${cpath}/board'
-		const value = event.target.value
+		const value = event.target.value	// select의 현재 선택된 값을 불러온다
 		location.href = url + (value != '' ? '?category=' + value : '')
 	}
 	
-	categorySelect.addEventListener('change', changeHandler)
+	categorySelect.addEventListener('change', changeHandler)	// 이벤트 리스너
+	// [event.source]가	[listener]되면, 		[handler]를 호출하여 실행한다 
+	// categorySelect가 		change되면,	changeHandler를 호출하여 실행한다
 </script>
 
 </body>

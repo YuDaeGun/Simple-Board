@@ -4,12 +4,31 @@ import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class BoardDTO {
-	private MultipartFile upload;
+//	idx			number			default board2_seq.nextval primary key,
+//	category	varchar2(100)	check(category in ('공지', '일반', '게임', '등산', '여행')),
+//	title		varchar2(200)	not null,
+//	writer		varchar2(100)	,
+//	content		varchar2(2000)	not null,
+//	writeDate	date			default sysdate,
+//	viewCount	number			default 0,
+//	uploadFile	varchar2(255)	,
+//	ipaddr		varchar2(20)	not null,
+//	deleted		char(1)			default 'n' check(deleted in ('y','n')),
 
-	private int idx, viewCount;
-	private String category, title, writer, content, uploadFile, ipaddr, deleted;
+public class BoardDTO {
+
+	private MultipartFile upload; 	// 파일 형식의 파라미터를 받기 위함
+
+	private int idx;
+	private String category;
+	private String title;
+	private String writer;
+	private String content;
 	private Date writeDate;
+	private int viewCount;
+	private String uploadFile;		// 문자열 형식인 파일이름을 DB에 저장하기 위함
+	private String ipaddr;
+	private String deleted;
 	
 	public int getIdx() {
 		return idx;

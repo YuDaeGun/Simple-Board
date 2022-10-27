@@ -174,7 +174,7 @@
 </head>
 <body>
 
-<h1><a href="${cpath }">BOARD</a></h1>
+<h1><a href="${cpath }">BOARD3</a></h1>
 <div class="loginInfo">
 	<c:if test="${empty login }">
 		<a id="nav_login" href="${cpath }/member/login"><button>로그인</button></a>
@@ -199,16 +199,16 @@
 </script>
 
 <script>
-	const nav_login = document.getElementById('nav_login')
+	const nav_login = document.getElementById('nav_login')	// a 태그를 불러온다
 	
 	const nav_login_handler = function(event) {
-		event.preventDefault()
-		let target = event.target
-		while(target.tagName != 'A') {
-			target = target.parentNode
+		event.preventDefault()			// 링크를 클릭했으나 일단 이동을 보류한다
+		let target = event.target		// 클릭된 대상을 불러온다 (이벤트는 a에 걸었으나 클릭당한 대상은 button이다)
+		while(target.tagName != 'A') {	// target에 저장된 요소의 태그 이름이 A가 아니라면
+			target = target.parentNode	// 현재 대상의 부모 노드를 target에 저장한다
 		}
-		const url = target.href + '?url=' + location.href
-		location.href = url
+		const url = target.href + '?url=' + location.href	// target은 이제 A이므로, href를 참조할 수 있다
+		location.href = url		// 만들어진 주소로 이동
 	}
 	if(nav_login != null) {
 		nav_login.onclick = nav_login_handler
