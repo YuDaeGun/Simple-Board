@@ -12,6 +12,6 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.itbank.board.BoardDTO" alias="board" />
+		<typeAlias type="com.test.board.BoardDTO" alias="board" />
 	</typeAliases>
 </configuration>

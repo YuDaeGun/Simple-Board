@@ -4,7 +4,7 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- BoardDAO의 메서드에 맞춰 실행될 SQL문을 작성한다 -->
-<mapper namespace="com.itbank.board.BoardDAO">
+<mapper namespace="com.test.board.BoardDAO">
 	<select id="selectList" parameterType="hashmap" resultType="board">
 		select * from board2 
 			<where>
@@ -21,7 +21,7 @@
 			fetch next #{paging.perPage} rows only
 	</select>
 	
-	<update id="update" parameterType="com.itbank.board.BoardDTO">
+	<update id="update" parameterType="com.test.board.BoardDTO">
 		update board2
 			<set>
 		<if test="category != null">	category	=	#{category},	</if>

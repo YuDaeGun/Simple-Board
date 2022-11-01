@@ -31,18 +31,18 @@
 	
 	<view-controller path="/" view-name="home" />
 	
-	<context:component-scan base-package="com.itbank.controller" />
+	<context:component-scan base-package="com.test.controller" />
 	
 	<interceptors>
 		<interceptor>
 			<mapping path="/board/write"/>
-			<beans:bean class="com.itbank.interceptor.LoginInterceptor" />
+			<beans:bean class="com.test.interceptor.LoginInterceptor" />
 		</interceptor>
 		
 		<interceptor>
 			<mapping path="/board/modify/**" />
 			<mapping path="/board/deleteConfirm/**" />
-			<beans:bean class="com.itbank.interceptor.BoardInterceptor" />
+			<beans:bean class="com.test.interceptor.BoardInterceptor" />
 		</interceptor>
 	</interceptors>
 	

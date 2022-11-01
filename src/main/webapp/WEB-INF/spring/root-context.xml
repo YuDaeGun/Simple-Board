@@ -36,9 +36,9 @@
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 	
-	<context:component-scan base-package="com.itbank.service" />
-	<context:component-scan base-package="com.itbank.component" />
-	<mybatis-spring:scan base-package="com.itbank.member" />
-	<mybatis-spring:scan base-package="com.itbank.board" />
+	<context:component-scan base-package="com.test.service" />
+	<context:component-scan base-package="com.test.component" />
+	<mybatis-spring:scan base-package="com.test.member" />
+	<mybatis-spring:scan base-package="com.test.board" />
 	
 </beans>
